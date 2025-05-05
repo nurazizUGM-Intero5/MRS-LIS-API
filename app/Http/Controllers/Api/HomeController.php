@@ -13,6 +13,10 @@ class HomeController extends Controller
    *    version="1.0.0",
    *    description="API Documentation for the application."
    * )
+   * @OA\Server(
+   *    url="http://127.0.0.1:8000/api",
+   *    description="Local server"
+   * )
    * @OA\Get(
    *     path="/",
    *     tags={"Home"},

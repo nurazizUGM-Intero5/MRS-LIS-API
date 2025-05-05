@@ -5,13 +5,19 @@
         "description": "API Documentation for the application.",
         "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "Local server"
+        }
+    ],
     "paths": {
         "/": {
             "get": {
                 "tags": [
                     "Home"
                 ],
-                "summary": "Welcome to the APIssss",
+                "summary": "Welcome to the API",
                 "description": "Returns a welcome message.",
                 "operationId": "e7d8aa7f2fcabe43d4c7daf29ec9bbcd",
                 "responses": {
