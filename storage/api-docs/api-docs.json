@@ -14,9 +14,6 @@
     "paths": {
         "/": {
             "get": {
-                "tags": [
-                    "Home"
-                ],
                 "summary": "Welcome to the API",
                 "description": "Returns a welcome message.",
                 "operationId": "e7d8aa7f2fcabe43d4c7daf29ec9bbcd",
@@ -43,12 +40,139 @@
                     }
                 }
             }
+        },
+        "/lab-orders": {
+            "get": {
+                "tags": [
+                    "Lab Orders"
+                ],
+                "summary": "Get all lab orders",
+                "operationId": "ff3d3e63b91818a5ad9409326273f81d",
+                "responses": {
+                    "200": {
+                        "description": "A list of lab orders"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Lab Orders"
+                ],
+                "summary": "Create a new lab order",
+                "operationId": "9fd1340a6ca0c1fcf4172075c05a1384",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "action": {
+                                            "type": "string",
+                                            "example": "NEW"
+                                        },
+                                        "urgency": {
+                                            "type": "string",
+                                            "example": "ROUTINE"
+                                        },
+                                        "display": {
+                                            "type": "string",
+                                            "example": "Haemoglobin"
+                                        },
+                                        "testType": {
+                                            "properties": {
+                                                "label": {
+                                                    "type": "string",
+                                                    "example": "Haemoglobin"
+                                                },
+                                                "conceptUuid": {
+                                                    "type": "string",
+                                                    "example": "21AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "orderer": {
+                                            "type": "string",
+                                            "example": "e016efdf-4cf2-41af-8b5a-bd1b55fc4887"
+                                        },
+                                        "accessionNumber": {
+                                            "type": "string",
+                                            "example": "124"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Lab order created successfully"
+                    }
+                }
+            }
+        },
+        "/lab-orders/{id}": {
+            "get": {
+                "tags": [
+                    "Lab Orders"
+                ],
+                "summary": "Get a specific lab order",
+                "operationId": "9fb98509e621ac10cd32c5448a7467fb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details of the lab order"
+                    }
+                }
+            }
+        },
+        "/patients": {
+            "get": {
+                "tags": [
+                    "Patients"
+                ],
+                "summary": "Get all patients",
+                "operationId": "402efe4826d9bd050fd660a4a26ab4b0",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filter patients by name",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of patients"
+                    }
+                }
+            }
         }
     },
     "tags": [
         {
-            "name": "Home",
-            "description": "Home"
+            "name": "Lab Orders",
+            "description": "Lab Orders"
+        },
+        {
+            "name": "Patients",
+            "description": "Patients"
         }
     ]
 }
